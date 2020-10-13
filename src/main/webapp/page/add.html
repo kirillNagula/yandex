@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AddPage</title>
+</head>
+<body>
+    <form th:action="@{/home/add}" method="post" th:object="${addPost}">
+        Title <input type="text" size="150"  th:field="*{title}"/>
+        <br>
+        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">bla-bla-bla</p>
+        <br>
+        Description <input type="text" size="40" th:field="*{description}"/>
+        <br>
+        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">bla-bla-bla</p>
+        <br>
+        Title
+        <textarea  cols="7"  th:field="*{text}"> </textarea>
+        <br>
+        <p th:if="${#fields.hasErrors('text')}" th:errors="*{text}">bla-bla-bla</p>
+        <br>
+        <button>Add post!</button>
+    </form>
+
+</body>
+</html>

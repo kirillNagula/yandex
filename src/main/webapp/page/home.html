@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  lang="ru"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
 </head>
 <body>
+    <a href="/account/auth" th:if="${session.user == null}">Authorization</a>
+    <a href="/account/registr" th:if="${session.user == null}">Registration</a>
+    <a href="/account/logout" th:if="${session.user != null}">Logout</a>
+
 <ol>
+    <li th:each="post: ${postList}"><a th:href="@{/home/post/{id}(id=${post.getId()})}" th:text="${post.getTitle()}"></a>
+            <p> likes <span th:text="${post.getLikeList()}"> </span></p>
+    </li>
 
 </ol>
 
+    <a th:if="${session.user != null}" href="/home/add">Add new Post</a>
 </body>
 </html>

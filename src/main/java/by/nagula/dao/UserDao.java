@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface UserDao {
     void createUser(User user);
-    void deleteUser(long id);
-    List<User> showAllUser();
-    void updateUser(long id);
     boolean containsById(long id);
     boolean containsByLogin(String login);
+    User showUser(String login);
 }

@@ -1,13 +1,9 @@
-package by.nagula.entity;
+package by.nagula.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-public class User {
-    private long id;
-    @NotEmpty
-    @NotBlank
-    private String name;
+public class UserDto {
     @NotEmpty
     @NotBlank
     private String login;
@@ -15,29 +11,12 @@ public class User {
     @NotBlank
     private String password;
 
-    public User(long id, String name,String login, String password) {
-        this.id = id;
-        this.name = name;
+    public UserDto(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
-    public User(){}
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public UserDto() {
     }
 
     public String getLogin() {
@@ -58,10 +37,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", login='" + login + '\'' +
+        return "UserDto{" +
+                "login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

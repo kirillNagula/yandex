@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Post</title>
 </head>
 <body>
+<h1 th:text="${post.getTitle()}"></h1>
+<p th:text="${post.getDescription()}"></p>
+<p th:text="${post.getText()}"></p>
+<p> Likes <span th:text="${post.getLikeList()}"></span> </p>
+    <form th:if="${session.user != null}" th:action="@{/home/post}" method="post">
+    <button>Like</button>
+<p>Comments</p>
+        <p th:if="${commentList.isEmpty()}">No comment</p>
+<ol>
+    <li th:each="item : ${commentList}" th:text="${item.text}"></li>
+</ol>
+        <p th:if="${session.user != null}">Add Comment</p>
+    <form th:if="${session.user != null}" th:action="@{/home/post}"  method="post" th:object="${comment}" >
+        <input type="text" th:field="*{text}">
 
+        <button>AddComments</button>
+    </form>
+
+</form>
 </body>
 </html>
