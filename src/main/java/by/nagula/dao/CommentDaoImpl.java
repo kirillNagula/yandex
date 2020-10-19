@@ -24,7 +24,7 @@ public class CommentDaoImpl implements CommentDao {
             PreparedStatement st = connection.prepareStatement(ADD_COMMENT);
             st.setString(1, comment.getText());
             st.setDate(2, comment.getDate());
-            st.setLong(3, comment.getId());
+            st.setLong(3, comment.getIdUser());
             st.setLong(4, comment.getIdPost());
             st.execute();
         } catch (SQLException throwables) {
@@ -40,7 +40,7 @@ public class CommentDaoImpl implements CommentDao {
             st.setLong(1, postID);
             ResultSet rs = st.executeQuery();
             while (rs.next()){
-                commentList.add(new Comment(rs.getString("text"), rs.getLong("id_user"), rs.getDate("date"),  rs.getLong("id_post")));
+                commentList.add(new Comment(rs.getString("text"),  rs.getDate("date"), rs.getLong("id_user"), rs.getLong("id_post")));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

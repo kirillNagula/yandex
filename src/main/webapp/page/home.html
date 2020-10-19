@@ -12,7 +12,6 @@
 
 <ol>
     <li th:each="post: ${postList}"><a th:href="@{/home/post/{id}(id=${post.getId()})}" th:text="${post.getTitle()}"></a>
-            <p> likes <span th:text="${post.getLikeList()}"> </span></p>
     </li>
 
 </ol>

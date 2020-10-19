@@ -11,20 +11,29 @@ public class Comment {
     @NotEmpty
     @NotBlank
     private String text;
-    @Min(1)
-    private long user;
     private Date date;
     @Min(1)
     private long idPost;
+    @Min(1)
+    private long idUser;
 
-    public Comment(String text, long user, Date date, long idPost) {
+
+    public Comment(@NotEmpty @NotBlank String text, Date date, @Min(1) long idPost, long idUser) {
         this.text = text;
-        this.user = user;
         this.date = date;
         this.idPost = idPost;
+        this.idUser = idUser;
     }
 
     public Comment() {
+    }
+
+    public long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(long idUser) {
+        this.idUser = idUser;
     }
 
     public long getId() {
@@ -41,14 +50,6 @@ public class Comment {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public long getUser() {
-        return user;
-    }
-
-    public void setUser(long user) {
-        this.user = user;
     }
 
     public Date getDate() {
@@ -72,9 +73,9 @@ public class Comment {
         return "Comment{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", user=" + user +
                 ", date=" + date +
                 ", idPost=" + idPost +
+                ", idUser=" + idUser +
                 '}';
     }
 }

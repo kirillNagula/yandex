@@ -7,15 +7,13 @@ public class Post {
     private String description;
     private String text;
     private long userId;
-    private long likeList;
 
-    public Post(long id, String title, String description, String text, long userId, long likeList) {
+    public Post(long id, String title, String description, String text, long userId) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.text = text;
         this.userId = userId;
-        this.likeList = likeList;
     }
 
     public Post() {
@@ -61,13 +59,6 @@ public class Post {
         this.userId = userId;
     }
 
-    public long getLikeList() {
-        return likeList;
-    }
-
-    public void setLikeList(long likeList) {
-        this.likeList = likeList;
-    }
 
     @Override
     public String toString() {
@@ -77,7 +68,6 @@ public class Post {
                 ", description='" + description + '\'' +
                 ", text='" + text + '\'' +
                 ", userId=" + userId +
-                ", likeList=" + likeList +
                 '}';
     }
 }

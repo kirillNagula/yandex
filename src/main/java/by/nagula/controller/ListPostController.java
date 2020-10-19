@@ -1,5 +1,6 @@
 package by.nagula.controller;
 
+import by.nagula.service.LikeByPostServiceImpl;
 import by.nagula.service.PostServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

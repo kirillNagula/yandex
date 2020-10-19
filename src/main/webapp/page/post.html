@@ -9,21 +9,21 @@
 <h1 th:text="${post.getTitle()}"></h1>
 <p th:text="${post.getDescription()}"></p>
 <p th:text="${post.getText()}"></p>
-<p> Likes <span th:text="${post.getLikeList()}"></span> </p>
-    <form th:if="${session.user != null}" th:action="@{/home/post}" method="post">
+<p> Likes <span th:text="${numberLikes}"></span> </p>
+    <form th:if="${session.user != null}" th:action="@{/home/post/like/{id}(id=${post.getId()})}" method="post">
     <button>Like</button>
+    </form>
 <p>Comments</p>
         <p th:if="${commentList.isEmpty()}">No comment</p>
 <ol>
     <li th:each="item : ${commentList}" th:text="${item.text}"></li>
 </ol>
         <p th:if="${session.user != null}">Add Comment</p>
-    <form th:if="${session.user != null}" th:action="@{/home/post}"  method="post" th:object="${comment}" >
-        <input type="text" th:field="*{text}">
-
+    <form th:if="${session.user != null}" th:action="@{/home/post/{id}(id=${post.getId()})}"  method="post" th:object="${comment}">
+        <input size="150" th:field="*{text}"/>
+<!--        <input type="hidden" name="postId" value="${post.id}" th:field="*{postId}"/>-->
         <button>AddComments</button>
     </form>
 
-</form>
 </body>
 </html>
